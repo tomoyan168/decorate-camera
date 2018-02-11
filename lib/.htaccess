@@ -1,0 +1,3 @@
+<Files ~ ".(js|css|png|svg|eot|otf|ttf|woff|woff2)$">
+	Header set Cache-Control "max-age=86400, public"
+</Files>

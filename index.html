@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Decorate Camera</title>
+  <link rel="stylesheet" href="lib/semantic/semantic.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="lib/jquery-3.2.1.min.js"></script>
+  <script src="lib/jcanvas-20.1.4.min.js"></script>
+  <script src="lib/semantic/semantic.min.js"></script>
+  <script src="lib/clmtrackr-1.1.2.min.js"></script>
+  <script src="lib/models/model_pca_20_svm.js"></script>
+
+  <script src="stamp.js"></script>
+  <script src="script.js"></script>
+
+</head>
+
+<body>
+
+  <div class="app">
+    <!-- title -->
+    <h1>Decorate Camera</h1>
+
+    <!-- Error -->
+    <div id="error" class="contents">
+
+      <!-- カメラ取得失敗 -->
+      <div class="ui error message hidden" id="error-get-media">カメラの取得に失敗しました。カメラの設定と権限を確認してから
+        <a href="./"> ページを再度読み込み
+          <i class="refresh icon"></i>
+        </a>してください。
+      </div>
+
+    </div>
+
+    <!-- カメラ -->
+    <div id="camera">
+      <video id="original-video" width="500px" height="300px"></video>
+      <canvas id="overwrite-canvas"></canvas>
+    </div>
+
+    <div id="log-area"></div>
+
+
+
+
+  </div>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+video {
+  background-image: url("img/video-unavailable.svg") no-repeat;
+  background-position: center;
+  background-color: silver;
+}
+
+#camera {
+  position: relative;
+}
+
+#original-video {
+  transform: scaleX(-1);
+}
+
+#overwrite-canvas {
+  transform: scaleX(-1);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
