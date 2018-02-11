@@ -1,6 +1,8 @@
 # めがねをかけるアプリ
 顔にめがねをかけるだけのアプリです．
 
+# Demo
+https://kimtm.github.io/decorate-camera/
 
 # 使い方
 1. カメラアクセスを許可
