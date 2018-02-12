@@ -31,48 +31,62 @@ $(function () {
   })
     .then(stream => {
 
-      // ストリームのサイズを取得
-      const streamVideoSettings = stream.getVideoTracks()[0].getSettings();
-
       // ビデオの設定
-      const video = $('#original-video').get(0);
+      const jqVideo = $('#original-video');
+      const video = jqVideo.get(0);
       video.srcObject = stream;
-      video.width = streamVideoSettings.width;
-      video.height = streamVideoSettings.height;
-      video.play();
 
-      // キャンバスの取得とリサイズ
+      // キャンバスの取得
       const jqCanvas = $('#overwrite-canvas');
       const canvas = jqCanvas.get(0);
       const ctx = canvas.getContext('2d');
-      canvas.width = streamVideoSettings.width;
-      canvas.height = streamVideoSettings.height;
 
-      // 顔検出
+      // 顔認識の初期化
       const ctracker = new clm.tracker();
       ctracker.init(pModel);
-      ctracker.start(video);
 
 
-      // 描画開始
-      (function draw() {
-        requestAnimationFrame(draw);
-        // 顔認識
-        const facePositions = ctracker.getCurrentPosition();
-        if (facePositions) {
-          // キャンバスをクリア
+      // ビデオが再生できるようになったとき
+      video.addEventListener('canplay', () => {
+
+        // キャンバスのリサイズ(clmtrackerの仕様なのかビデオのサイズも指定)
+        const videoWidth = jqVideo.width();
+        const videoHeight = jqVideo.height();
+        video.width = videoWidth;
+        video.height = videoHeight;
+        canvas.width = videoWidth;
+        canvas.height = videoHeight;
+
+        // ビデオの再生と顔認識を開始
+        video.play();
+        ctracker.start(video);
+
+        // 描画開始
+        (function draw() {
+          requestAnimationFrame(draw);
+
+          // キャンバスをクリアとビデオの転写
           jqCanvas.clearCanvas();
-          ctx.drawImage(video, 0, 0, video.width, video.height);
+          ctx.drawImage(video, 0, 0, videoWidth, videoHeight);
 
-          // スタンプを表示
-          for (let stamp of Object.values(stamps)) {
-            stamp.drawStamp(jqCanvas, facePositions);
+          // 顔認識
+          const facePositions = ctracker.getCurrentPosition();
+          if (facePositions) {
+            $('#log-area').text('');
+
+            // スタンプを表示
+            for (let stamp of Object.values(stamps)) {
+              stamp.drawStamp(jqCanvas, facePositions);
+            }
+
+            // 顔認識結果を描画
+            // ctracker.draw(canvas);
+          } else {
+            $('#log-area').text('顔認識に失敗しました');
           }
+        })();
 
-          // 顔認識結果を描画
-          // ctracker.draw(canvas);
-        }
-      })();
+      });
 
     })
     .catch(error => {
