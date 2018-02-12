@@ -6,7 +6,10 @@
 /* globals clm pModel */
 /* globals GlassesStamp */
 
-
+/* フラグ */
+const flags = {
+  showDetectResult: false
+};
 
 /* スタンプの生成 */
 const stamps = {
@@ -80,7 +83,9 @@ $(function () {
             }
 
             // 顔認識結果を描画
-            // ctracker.draw(canvas);
+            if (flags.showDetectResult) {
+              ctracker.draw(canvas);
+            }
           } else {
             $('#log-area').text('顔認識に失敗しました');
           }
@@ -94,6 +99,18 @@ $(function () {
       console.error('mediaDevice.getUserMedia() :', error);
       $('#error-get-media').show();
     });
+
+
+  /**
+   * 顔認識結果の表示切替UI
+   */
+  $('#detection-show').on('change', function () {
+    if ($(this).is(':checked')) {
+      flags.showDetectResult = true;
+    } else {
+      flags.showDetectResult = false;
+    }
+  });
 
 
   /**

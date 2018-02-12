@@ -11,3 +11,7 @@ video {
 #overwrite-canvas {
   transform: scaleX(-1);
 }
+
+#control {
+  margin-left: 1rem;
+}
