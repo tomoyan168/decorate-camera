@@ -1,7 +1,7 @@
 video {
   background-image: url("img/video-unavailable.svg") no-repeat;
   background-position: center;
-  background-color: silver;
+  background-color: transparent;
 }
 
 #camera {

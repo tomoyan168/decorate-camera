@@ -19,13 +19,15 @@ $(function () {
 
   // メディアの取得
   navigator.mediaDevices.getUserMedia({
+    audio: false,
     video: {
-      facingMode: 'user',
+      facingMode: {
+        ideal: 'user'
+      },
       frameRate: {
-        ideal: 17
+        ideal: 15
       }
-    },
-    audio: false
+    }
   })
     .then(stream => {
       // ビデオの設定
