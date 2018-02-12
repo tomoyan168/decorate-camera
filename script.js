@@ -30,16 +30,23 @@ $(function () {
     }
   })
     .then(stream => {
+
+      // ストリームのサイズを取得
+      const streamVideoSettings = stream.getVideoTracks()[0].getSettings();
+
       // ビデオの設定
       const video = $('#original-video').get(0);
       video.srcObject = stream;
+      video.width = streamVideoSettings.width;
+      video.height = streamVideoSettings.height;
       video.play();
 
       // キャンバスの取得とリサイズ
       const jqCanvas = $('#overwrite-canvas');
       const canvas = jqCanvas.get(0);
-      canvas.width = video.width;
-      canvas.height = video.height;
+      const ctx = canvas.getContext('2d');
+      canvas.width = streamVideoSettings.width;
+      canvas.height = streamVideoSettings.height;
 
       // 顔検出
       const ctracker = new clm.tracker();
@@ -55,6 +62,7 @@ $(function () {
         if (facePositions) {
           // キャンバスをクリア
           jqCanvas.clearCanvas();
+          ctx.drawImage(video, 0, 0, video.width, video.height);
 
           // スタンプを表示
           for (let stamp of Object.values(stamps)) {

@@ -4,17 +4,10 @@ video {
   background-color: transparent;
 }
 
-#camera {
-  position: relative;
-}
-
 #original-video {
-  transform: scaleX(-1);
+  display: none;
 }
 
 #overwrite-canvas {
   transform: scaleX(-1);
-  position: absolute;
-  left: 0;
-  top: 0;
 }
