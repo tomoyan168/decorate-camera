@@ -1,5 +1,5 @@
 # めがねをかけるアプリ
-顔にめがねをかけるだけのアプリです．
+カメラで認識した顔にめがねをかけてあげるアプリ(1人用)
 
 # Demo
 https://kimtm.github.io/decorate-camera/
@@ -12,6 +12,7 @@ https://kimtm.github.io/decorate-camera/
 # 動作環境
 * カメラを搭載したデバイス
 * ES6対応ブラウザ
+* スマホでは顔認識が追いつかない場合があります
 
 
 # 使用ライブラリ
