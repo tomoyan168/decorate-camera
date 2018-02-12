@@ -81,6 +81,22 @@ $(function () {
       $('#error-get-media').show();
     });
 
+
+  /**
+   * めがねのUI
+   */
+  // めがねの高さ比
+  document.getElementById('meganeHRanger').addEventListener('input', function () {
+    stamps.glasses.glassesSizeH = this.value;
+    $('#meganeHMeter').text(stamps.glasses.glassesSizeH);
+  });
+  // めがねの幅比
+  document.getElementById('meganeWRanger').addEventListener('input', function () {
+    stamps.glasses.glassesSizeW = this.value;
+    $('#meganeWMeter').text(stamps.glasses.glassesSizeW);
+  });
+
+
 });
 
 

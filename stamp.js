@@ -69,10 +69,26 @@ class GlassesStamp extends Stamp {
    */
   constructor(glassesSize) {
     super('stamps/glasses.png');
-    this.glasses = {
-      w: glassesSize.w,
-      h: glassesSize.h
-    };
+    this.properties = {};
+    this.glassesSizeW = glassesSize.w;
+    this.glassesSizeH = glassesSize.h;
+
+  }
+
+  get glassesSizeW() {
+    return this.properties.w;
+  }
+
+  set glassesSizeW(w) {
+    this.properties.w = w || 1.3;
+  }
+
+  get glassesSizeH() {
+    return this.properties.h;
+  }
+
+  set glassesSizeH(h) {
+    this.properties.h = h || 2.2;
   }
 
   /**
@@ -109,8 +125,8 @@ class GlassesStamp extends Stamp {
       source: this.imageSrc,
       x: x,
       y: y,
-      width: w * this.glasses.w,
-      height: h * this.glasses.h,
+      width: w * this.glassesSizeW,
+      height: h * this.glassesSizeH,
       rotate: rad,
       fromCenter: true
     };
