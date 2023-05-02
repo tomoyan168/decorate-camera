@@ -2,7 +2,7 @@
 カメラで認識した顔にめがねをかけてあげるアプリ(1人用)
 
 # Demo
-https://kimtm.github.io/decorate-camera/
+https://tomoyan168.github.io/decorate-camera/
 
 # 使い方
 1. カメラアクセスを許可
