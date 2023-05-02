@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.12 - Dimmer
+ * # Semantic UI 2.5.0 - Dimmer
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -25,6 +25,7 @@
   height: 100%;
   text-align: center;
   vertical-align: middle;
+  padding: 1em;
   background-color: rgba(0, 0, 0, 0.85);
   opacity: 0;
   line-height: 1;
@@ -32,8 +33,10 @@
           animation-fill-mode: both;
   -webkit-animation-duration: 0.5s;
           animation-duration: 0.5s;
-  -webkit-transition: background-color 0.5s linear;
   transition: background-color 0.5s linear;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -44,17 +47,10 @@
 
 /* Dimmer Content */
 .ui.dimmer > .content {
-  width: 100%;
-  height: 100%;
-  display: table;
   -webkit-user-select: text;
      -moz-user-select: text;
       -ms-user-select: text;
           user-select: text;
-}
-.ui.dimmer > .content > * {
-  display: table-cell;
-  vertical-align: middle;
   color: #FFFFFF;
 }
 
@@ -82,16 +78,22 @@
             States
 *******************************/
 
+
+/* Animating */
 .animating.dimmable:not(body),
 .dimmed.dimmable:not(body) {
   overflow: hidden;
 }
+
+/* Animating / Active / Visible */
 .dimmed.dimmable > .ui.animating.dimmer,
 .dimmed.dimmable > .ui.visible.dimmer,
 .ui.active.dimmer {
-  display: block;
+  display: flex;
   opacity: 1;
 }
+
+/* Disabled */
 .ui.disabled.dimmer {
   width: 0 !important;
   height: 0 !important;
@@ -104,17 +106,37 @@
 
 
 /*--------------
+    Legacy
+---------------*/
+
+
+/* Animating / Active / Visible */
+.dimmed.dimmable > .ui.animating.legacy.dimmer,
+.dimmed.dimmable > .ui.visible.legacy.dimmer,
+.ui.active.legacy.dimmer {
+  display: block;
+}
+
+/*--------------
+    Alignment
+---------------*/
+
+.ui[class*="top aligned"].dimmer {
+  justify-content: flex-start;
+}
+.ui[class*="bottom aligned"].dimmer {
+  justify-content: flex-end;
+}
+
+/*--------------
       Page
 ---------------*/
 
 .ui.page.dimmer {
   position: fixed;
-  -webkit-transform-style: '';
-          transform-style: '';
-  -webkit-perspective: 2000px;
-          perspective: 2000px;
-  -webkit-transform-origin: center center;
-          transform-origin: center center;
+  transform-style: '';
+  perspective: 2000px;
+  transform-origin: center center;
 }
 body.animating.in.dimmable,
 body.dimmed.dimmable {
@@ -131,7 +153,6 @@ body.dimmable > .dimmer {
 .blurring.dimmable > :not(.dimmer) {
   -webkit-filter: blur(0px) grayscale(0);
           filter: blur(0px) grayscale(0);
-  -webkit-transition: 800ms -webkit-filter ease;
   transition: 800ms -webkit-filter ease;
   transition: 800ms filter ease;
   transition: 800ms filter ease, 800ms -webkit-filter ease;

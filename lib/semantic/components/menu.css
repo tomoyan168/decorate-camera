@@ -20,8 +20,6 @@
 ---------------*/
 
 .ui.menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin: 1rem 0em;
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -54,8 +52,6 @@
   margin: 0em;
 }
 .ui.menu:not(.vertical) > .menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -64,12 +60,8 @@
 ---------------*/
 
 .ui.menu:not(.vertical) .item {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .ui.menu .item {
   position: relative;
@@ -77,9 +69,7 @@
   line-height: 1;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
+  flex: 0 0 auto;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -89,7 +79,6 @@
   text-transform: none;
   color: rgba(0, 0, 0, 0.87);
   font-weight: normal;
-  -webkit-transition: background 0.1s ease, box-shadow 0.1s ease, color 0.1s ease;
   transition: background 0.1s ease, box-shadow 0.1s ease, color 0.1s ease;
 }
 .ui.menu > .item:first-child {
@@ -156,16 +145,9 @@
 
 .ui.menu > .grid,
 .ui.menu > .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: inherit;
-      -ms-flex-align: inherit;
-          align-items: inherit;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: inherit;
-          flex-direction: inherit;
+  align-items: inherit;
+  flex-direction: inherit;
 }
 
 /*--------------
@@ -222,10 +204,7 @@
   background: #FFFFFF;
   margin: 0em 0px 0px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
-  -webkit-box-orient: vertical !important;
-  -webkit-box-direction: normal !important;
-      -ms-flex-direction: column !important;
-          flex-direction: column !important;
+  flex-direction: column !important;
 }
 
 /* Menu Items */
@@ -239,7 +218,6 @@
   text-transform: none !important;
   font-weight: normal !important;
   box-shadow: none !important;
-  -webkit-transition: none !important;
   transition: none !important;
 }
 .ui.menu .ui.dropdown .menu > .item:hover {
@@ -262,7 +240,7 @@
   display: inline-block;
   font-size: 1em !important;
   float: none;
-  margin: 0em 0.75em 0em 0em;
+  margin: 0em 0.75em 0em 0em !important;
 }
 
 /* Secondary */
@@ -359,6 +337,16 @@
 
 
 /*--------------
+     List
+---------------*/
+
+
+/* Menu divider shouldnt apply */
+.ui.menu .list .item:before {
+  background: none !important;
+}
+
+/*--------------
      Sidebar
 ---------------*/
 
@@ -449,9 +437,9 @@
 
 .ui.menu .item.disabled,
 .ui.menu .item.disabled:hover {
-  cursor: default;
+  cursor: default !important;
   background-color: transparent !important;
-  color: rgba(40, 40, 40, 0.3);
+  color: rgba(40, 40, 40, 0.3) !important;
 }
 
 
@@ -467,9 +455,7 @@ Floated Menu / Item
 
 /* Left Floated */
 .ui.menu:not(.vertical) .left.item,
-.ui.menu:not(.vertical) .left.menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.ui.menu:not(.vertical) :not(.dropdown) > .left.menu {
   display: flex;
   margin-right: auto !important;
 }
@@ -477,8 +463,6 @@ Floated Menu / Item
 /* Right Floated */
 .ui.menu:not(.vertical) .right.item,
 .ui.menu:not(.vertical) .right.menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin-left: auto !important;
 }
@@ -496,10 +480,7 @@ Floated Menu / Item
 
 .ui.vertical.menu {
   display: block;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   background: #FFFFFF;
   box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
 }
@@ -608,7 +589,7 @@ Floated Menu / Item
   border-bottom: 1px solid #D4D4D5;
 }
 .ui.tabular.fluid.menu {
-  width: calc(100% +  2px ) !important;
+  width: calc(100% + (1px * 2)) !important;
 }
 .ui.tabular.menu .item {
   background: transparent;
@@ -652,7 +633,7 @@ Floated Menu / Item
 }
 .top.attached.segment + .ui.bottom.tabular.menu {
   position: relative;
-  width: calc(100% +  2px );
+  width: calc(100% + (1px * 2));
   left: -1px;
 }
 
@@ -741,8 +722,6 @@ Floated Menu / Item
 
 .ui.pagination.menu {
   margin: 0em;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   vertical-align: middle;
 }
@@ -787,15 +766,12 @@ Floated Menu / Item
 
 /* Item */
 .ui.secondary.menu .item {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
   box-shadow: none;
   border: none;
   padding: 0.78571429em 0.92857143em;
   margin: 0em 0.35714286em;
   background: none;
-  -webkit-transition: color 0.1s ease;
   transition: color 0.1s ease;
   border-radius: 0.28571429rem;
 }
@@ -913,12 +889,10 @@ Floated Menu / Item
   border-bottom-color: transparent;
   border-bottom-style: solid;
   border-radius: 0em;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
+  align-self: flex-end;
   margin: 0em 0em -2px;
   padding: 0.85714286em 1.14285714em;
   border-bottom-width: 2px;
-  -webkit-transition: color 0.1s ease;
   transition: color 0.1s ease;
 }
 
@@ -1031,14 +1005,11 @@ Floated Menu / Item
 .ui.text.menu .item {
   border-radius: 0px;
   box-shadow: none;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
   margin: 0em 0em;
   padding: 0.35714286em 0.5em;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.6);
-  -webkit-transition: opacity 0.1s ease;
   transition: opacity 0.1s ease;
 }
 
@@ -1208,10 +1179,7 @@ Floated Menu / Item
 /* Item */
 .ui.labeled.icon.menu .item {
   min-width: 6em;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 
 /* Icon */
@@ -1239,10 +1207,7 @@ Floated Menu / Item
 
 @media only screen and (max-width: 767px) {
   .ui.stackable.menu {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
   .ui.stackable.menu .item {
     width: 100% !important;
@@ -1267,10 +1232,7 @@ Floated Menu / Item
   }
   .ui.stackable.menu .right.menu,
   .ui.stackable.menu .left.menu {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
 }
 
@@ -1642,8 +1604,6 @@ Floated Menu / Item
 --------------------*/
 
 .ui.compact.menu {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   margin: 0em;
   vertical-align: middle;
@@ -1685,9 +1645,7 @@ Floated Menu / Item
   margin-left: 0em !important;
   margin-right: 0em !important;
   text-align: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 .ui.attached.item.menu {
   margin: 0em -1px !important;
@@ -1714,13 +1672,13 @@ Floated Menu / Item
   width: 14.285%;
 }
 .ui.menu.eight.item .item {
-  width: 12.500%;
+  width: 12.5%;
 }
 .ui.menu.nine.item .item {
   width: 11.11%;
 }
 .ui.menu.ten.item .item {
-  width: 10.0%;
+  width: 10%;
 }
 .ui.menu.eleven.item .item {
   width: 9.09%;
@@ -1803,8 +1761,7 @@ Floated Menu / Item
   content: '';
   top: 100%;
   left: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
-          transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
   background: none;
   margin: 0.5px 0em 0em;
   width: 0.57142857em;
@@ -1813,7 +1770,6 @@ Floated Menu / Item
   border-bottom: 1px solid #D4D4D5;
   border-right: 1px solid #D4D4D5;
   z-index: 2;
-  -webkit-transition: background 0.1s ease;
   transition: background 0.1s ease;
 }
 .ui.vertical.pointing.menu .item:after {
@@ -1822,8 +1778,7 @@ Floated Menu / Item
   right: 0%;
   bottom: auto;
   left: auto;
-  -webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);
-          transform: translateX(50%) translateY(-50%) rotate(45deg);
+  transform: translateX(50%) translateY(-50%) rotate(45deg);
   margin: 0em -0.5px 0em 0em;
   border: none;
   border-top: 1px solid #D4D4D5;
@@ -1875,8 +1830,8 @@ Floated Menu / Item
   bottom: 0px;
   border-radius: 0px;
   margin: 0em -1px;
-  width: calc(100% +  2px );
-  max-width: calc(100% +  2px );
+  width: calc(100% - (-1px * 2));
+  max-width: calc(100% - (-1px * 2));
   box-shadow: none;
 }
 .ui.attached + .ui.attached.menu:not(.top) {
@@ -1976,18 +1931,18 @@ Floated Menu / Item
 
 /* Huge */
 .ui.huge.menu {
-  font-size: 1.14285714rem;
+  font-size: 1.21428571rem;
 }
 .ui.huge.vertical.menu {
-  width: 20rem;
+  width: 22rem;
 }
 
 /* Big */
 .ui.big.menu {
-  font-size: 1.21428571rem;
+  font-size: 1.14285714rem;
 }
 .ui.big.vertical.menu {
-  width: 22rem;
+  width: 20rem;
 }
 
 /* Massive */

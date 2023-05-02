@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.2.12 - Reset
+ * # Semantic UI 2.5.0 - Reset
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -155,7 +155,8 @@ abbr[title] {
   text-decoration: underline;
   
 /* 2 */
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   
 /* 2 */
 }
